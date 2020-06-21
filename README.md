@@ -2,18 +2,19 @@
 
 A pipeline to solve the problem here: https://www.kaggle.com/c/nlp-getting-started/overview
 
-Best F-Score (without cheating) on leaderboard is near 0.85. 
-The best solution here, obtains 0.81 with spacy w2v + GRU/LSTM (with LRELU).
-Surprisingly, the bag of words / tweet level features approach with catboost/xgboost gives very similar results: 0.805
+* Best F-Score (without cheating) on leaderboard is near 0.85. 
+* The best solution here, obtains 0.81 with spacy w2v + GRU/LSTM (with LRELU).
+* The bag of words / tweet level features approach with catboost/xgboost gives very similar results: 0.805
+* Requirements: Spacy for word vectors, tags; Textblog/nltk for other stuff; Pytorch, sklearn, xgboost, catboost for modelling. 
 
-Spacy is the library used to generate word vectors.  
 Steps:
 
-1. run tweet_clean.py (gives you 2 more "text" columns to operate on).
+1. run tweet_clean.py (gives you 2 more "text" columns to operate on) and keybits.py (to generate keybits for later use)
 * 'text clean' (cleaned tweet; also very good score)
 * 'text simple' (super stripped tweet, essential words only; best score with lstm)
 * 'text links' (text from links in tweet from requests/bs4; works but slow)
 * 'text users' (user meta data like bio/user count, in development)
+*  keybits.csv contains keybits within keywords - for the BOW approach
 
 2. generate tweet level features:
 
@@ -30,6 +31,7 @@ Steps:
 * pytorch_lstm.py (deep low level LSTM/GRU, that uses spacy
 
 Interpretation/Story Telling: 
+
 1. keywords are essential is distinguishing a general tweet from a disaster related one. Problem is that this challenge is about separating tweets which already have keywords. So almost every single tweet in this data has some keyword that led it to being flagged. 
 2. Not all keywords are the same. Some like 'fire' can be used both with 'festival' and 'forest'. But keywords like 'richter' or 'cloudburst' cannot be used in general situations. So just a single feature - target event rate encoding on 'keyword' can give a score of 71F. 
 3. Part of Speech/Named entities matters. Disaster related tweets have a lot of nouns, geopolitical entities/organisations. They carry dates and locations, facts and figures. Specifics. While nonDisaster related tweets have a lot of pronouns 'I'/'You'/'Me' and stop words. 
