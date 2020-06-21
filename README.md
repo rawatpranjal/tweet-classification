@@ -32,7 +32,7 @@ Steps:
 
 Interpretation/Story Telling: 
 
-1. keywords are essential is distinguishing a general tweet from a disaster related one. Problem is that this challenge is about separating tweets which already have keywords. So almost every single tweet in this data has some keyword that led it to being flagged. 
+1. keywords are essential in distinguishing a general tweet from a disaster related one. Problem is that this challenge is about separating tweets which already have keywords. So almost every single tweet in this data has some keyword that led it to being flagged. 
 2. Not all keywords are the same. Some like 'fire' can be used both with 'festival' and 'forest'. But keywords like 'richter' or 'cloudburst' cannot be used in general situations. So just a single feature - target event rate encoding on 'keyword' can give a score of 71F. 
 3. Part of Speech/Named entities matters. Disaster related tweets have a lot of nouns, geopolitical entities/organisations. They carry dates and locations, facts and figures. Specifics. While nonDisaster related tweets have a lot of pronouns 'I'/'You'/'Me' and stop words. 
 4. While Sentiment-> 'objectivity' or 'subjectivity' score or positivity/negativity for the tweet from textblob should absolutely matter, it was not useful.  
@@ -51,3 +51,4 @@ Some findings:
 3. Bag of words approach works. As done the embeddings approach. The former has better interpretation, the latter is faster to impliment. 
 4. The best scores on this problem use BERT/Transformers. But its possible to do reasonably well without them. 
 5. Averaging w2v scores over tweet leads to loss of information.
+6. there are mislabelled records in training data (that could be corrected), and abbreviation in tweets that could be changed. Also separating hashtags like -> #GOPDebate to GOP Debate requires some regex knowledge.  
