@@ -30,13 +30,19 @@ Steps:
 * pytorch_lstm.py (deep low level LSTM/GRU, that uses spacy
 
 Interpretation/Story Telling: 
-< to be done > 
+1. keywords are essential is distinguishing a general tweet from a disaster related one. Problem is that this challenge is about separating tweets which already have keywords. So almost every single tweet in this data has some keyword that led it to being flagged. 
+2. Not all keywords are the same. Some like 'fire' can be used both with 'festival' and 'forest'. But keywords like 'richter' or 'cloudburst' cannot be used in general situations. So just a single feature - target event rate encoding on 'keyword' can give a score of 71F. 
+3. Part of Speech/Named entities matters. Disaster related tweets have a lot of nouns, geopolitical entities/organisations. They carry dates and locations, facts and figures. Specifics. While nonDisaster related tweets have a lot of pronouns 'I'/'You'/'Me' and stop words. 
+4. While Sentiment-> 'objectivity' or 'subjectivity' score or positivity/negativity for the tweet from textblob should absolutely matter, it was not useful.  
+5. Usernames & Links: <TBD>
+6. Sequential ordering of words matters. Very sparce words in 'text simple' plus lstm can give as good a score as the bag-of-words approach. 
+
 
 
 Some findings: 
 1. tweet cleaning matters, but dont go overboard. 
 2. spacy large embeddings 'core-en-web-lg' is way better than the smaller models
-3. Bag of words approach works. As done the embeddings approach. 
+3. Bag of words approach works. As done the embeddings approach. The former has better interpretation, the latter is faster to impliment. 
 4. The best scores on this problem use BERT/Transformers. But its possible to do reasonably well without them. 
 5. build a pipeline, then tweak components without affecting complete flow
 6. a good cross-validation/evaluation procedure matters. 
