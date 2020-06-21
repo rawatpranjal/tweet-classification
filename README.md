@@ -10,24 +10,24 @@ Spacy is the library used to generate word vectors.
 Steps:
 
 1. run tweet_clean.py (gives you 2 more "text" columns to operate on).
---> 'text clean' (cleaned tweet; also very good score)
---> 'text simple' (super stripped tweet, essential words only; best score with lstm)
---> 'text links' (text from links in tweet from requests/bs4; works but slow)
---> 'text users' (user meta data like bio/user count, in development)
+* 'text clean' (cleaned tweet; also very good score)
+* 'text simple' (super stripped tweet, essential words only; best score with lstm)
+* 'text links' (text from links in tweet from requests/bs4; works but slow)
+* 'text users' (user meta data like bio/user count, in development)
 
 2. generate tweet level features:
 
---> keybit_features.py (keybits like 'fire', 'explo', 'burn')
---> word2vec_features.py (avg w2v score for the tweet)
---> lexical_features.py (parts of speech (noun/verbs), named entities (orgs, geopoliticals)
---> sentiment_features.py (objectivity, subjectivity, positivity, negativity)
+* keybit_features.py (keybits like 'fire', 'explo', 'burn')
+* word2vec_features.py (avg w2v score for the tweet)
+* lexical_features.py (parts of speech (noun/verbs), named entities (orgs, geopoliticals)
+* sentiment_features.py (objectivity, subjectivity, positivity, negativity)
 
 3. Model training and submission file
 
---> model_validation.py (cross validation with logistic, xgb)
---> catboost_simple.py (catboost has this amazing processing of categorical and textual features, a personal favorite)
---> pytorch_deepnet.py (deep ANN for classification)
---> pytorch_lstm.py (deep low level LSTM/GRU, that uses spacy
+* model_validation.py (cross validation with logistic, xgb)
+* catboost_simple.py (catboost has this amazing processing of categorical and textual features, a personal favorite)
+* pytorch_deepnet.py (deep ANN for classification)
+* pytorch_lstm.py (deep low level LSTM/GRU, that uses spacy
 
 Interpretation/Story Telling: 
 < to be done > 
