@@ -37,8 +37,11 @@ Interpretation/Story Telling:
 3. Part of Speech/Named entities matters. Disaster related tweets have a lot of nouns, geopolitical entities/organisations. They carry dates and locations, facts and figures. Specifics. While nonDisaster related tweets have a lot of pronouns 'I'/'You'/'Me' and stop words. 
 4. While Sentiment-> 'objectivity' or 'subjectivity' score or positivity/negativity for the tweet from textblob should absolutely matter, it was not useful.  
 5. Usernames & Links: <TBD>
-6. Sequential ordering of words matters. Very sparce words in 'text simple' plus lstm can give as good a score as the bag-of-words approach. 
+6. Sequential ordering of words matters. Very sparce words in 'text simple' plus lstm can give as good a score as the bag-of-words approach. Attention (although not dealt with here), should matter. 
 
+
+ 'this festival! its on fire!'
+ 'this forest! its on fire!'
 
 
 Some findings: 
@@ -46,5 +49,4 @@ Some findings:
 2. spacy large embeddings 'core-en-web-lg' is way better than the smaller models
 3. Bag of words approach works. As done the embeddings approach. The former has better interpretation, the latter is faster to impliment. 
 4. The best scores on this problem use BERT/Transformers. But its possible to do reasonably well without them. 
-5. build a pipeline, then tweak components without affecting complete flow
-6. a good cross-validation/evaluation procedure matters. 
+5. Averaging w2v scores over tweet leads to loss of information.
