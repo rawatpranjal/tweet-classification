@@ -2,7 +2,7 @@
 
 A pipeline to solve the problem here: https://www.kaggle.com/c/nlp-getting-started/overview
 
-Best F-Score on leaderboard is near 0.85. 
+Best F-Score (without cheating) on leaderboard is near 0.85. 
 The best solution here, obtains 0.81 with spacy w2v + GRU/LSTM (with LRELU).
 Surprisingly, the bag of words / tweet level features approach with catboost/xgboost gives very similar results: 0.805
 
